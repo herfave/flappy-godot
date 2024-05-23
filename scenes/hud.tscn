@@ -1,0 +1,67 @@
+[gd_scene load_steps=7 format=3 uid="uid://dyjqhm5cjjcgn"]
+
+[ext_resource type="Script" path="res://scripts/hud.gd" id="1_w6uwf"]
+[ext_resource type="FontFile" uid="uid://dyhh60a7qnv1g" path="res://assets/FlappyBirdRegular-9Pq0.ttf" id="2_qiugq"]
+
+[sub_resource type="Theme" id="Theme_0v448"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_l3wq6"]
+font = ExtResource("2_qiugq")
+font_size = 128
+outline_size = 12
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Theme" id="Theme_kijom"]
+default_font = ExtResource("2_qiugq")
+default_font_size = 64
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ql3bb"]
+content_margin_left = 6.0
+content_margin_top = 6.0
+content_margin_right = 6.0
+content_margin_bottom = 6.0
+bg_color = Color(0.118581, 0.118581, 0.118581, 0.87451)
+border_color = Color(0, 0, 0, 1)
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_w6uwf")
+
+[node name="Score" type="Label" parent="."]
+z_index = 10
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 68.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme = SubResource("Theme_0v448")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+text = "99"
+label_settings = SubResource("LabelSettings_l3wq6")
+horizontal_alignment = 1
+
+[node name="Start" type="Button" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -66.0
+offset_top = -17.5
+offset_right = 66.0
+offset_bottom = 17.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme = SubResource("Theme_kijom")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 16
+theme_override_constants/h_separation = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_ql3bb")
+text = "Start Game"
+
+[connection signal="score_updated" from="." to="." method="_on_score_updated"]

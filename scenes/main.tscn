@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://ds6qi6jvbniqv"]
+
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_muomr"]
+[ext_resource type="Script" path="res://scripts/ParallaxBackground.gd" id="4_3otkh"]
+[ext_resource type="Texture2D" uid="uid://g15c64mjq78l" path="res://assets/sprites/background-day.png" id="4_yrs47"]
+[ext_resource type="PackedScene" uid="uid://dyjqhm5cjjcgn" path="res://scenes/hud.tscn" id="5_272dd"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_muomr")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(407, 252)
+zoom = Vector2(1.5, 1.5)
+
+[node name="PipeSpawner" type="Node2D" parent="."]
+position = Vector2(828, 248)
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+script = ExtResource("4_3otkh")
+
+[node name="Background" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(-116, -66)
+motion_mirroring = Vector2(764, 0)
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/Background"]
+texture_repeat = 2
+offset_top = 67.0
+offset_right = 764.0
+offset_bottom = 579.0
+texture = ExtResource("4_yrs47")
+stretch_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="HUD" parent="." instance=ExtResource("5_272dd")]
+
+[node name="PlayerSpawn" type="Node2D" parent="."]
+position = Vector2(200, 250)
